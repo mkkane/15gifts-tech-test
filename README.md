@@ -17,8 +17,9 @@ As mentioned the app is a basic Node.js app.  Have a look in the
 shared with the dev machine.
 
 Unfortunately, due to time constraints there are no tests for the app!
-(I usually use mocha for node.js.)  However there is a linter which
-you can run by sshing into the dev machine and doing
+(I usually use mocha for node.js.)  And the code is uncommented sorry.
+However there is a linter which you can run by sshing into the dev
+machine and doing
 
     npm run lint
 
