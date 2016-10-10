@@ -1,0 +1,18 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+  },
+  "ecmaFeatures": {
+    "generators": true,
+  },
+  "extends": "airbnb/base",
+  "rules": {
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "valid-jsdoc": 2,
+    "arrow-body-style": 0,
+    "no-unneeded-ternary": ["error", {"defaultAssignment": true }],
+    "generator-star-spacing": ["error", {"before": true, "after": false}],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+  },
+}

@@ -1,0 +1,8 @@
+CREATE DATABASE <%= node['15gifts']['db_name'] %>;
+GRANT ALL ON <%= node['15gifts']['db_name'] %>.* To '<%= node['15gifts']['db_user'] %>'@'<%= node['15gifts']['db_host'] %>' IDENTIFIED BY '<%= node['15gifts']['db_password'] %>';
+
+USE <%= node['15gifts']['db_name'] %>;
+
+CREATE TABLE words (
+  word VARCHAR(255)
+);

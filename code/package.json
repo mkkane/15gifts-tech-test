@@ -1,0 +1,26 @@
+{
+  "name": "15gifts",
+  "version": "1.0.0",
+  "description": "15gifts test app",
+  "scripts": {
+    "start": "nodemon app.js",
+    "lint": "eslint *.js"
+  },
+  "author": "Michael Kane <michael@mkkorp.com>",
+  "license": "Unlicense",
+  "private": true,
+  "engines": {
+    "node": ">=6.7.0 <7.0.0"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "dotenv": "^2.0.0",
+    "mysql2": "^1.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "nodemon": "^1.11.0"
+  }
+}

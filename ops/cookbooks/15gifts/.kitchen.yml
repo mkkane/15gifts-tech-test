@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+  synced_folders:
+    - ['../../../code', '/home/vagrant/code']
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[15gifts::default]
+    verifier:
+      inspec_tests:
+        - test/recipes
+    attributes:

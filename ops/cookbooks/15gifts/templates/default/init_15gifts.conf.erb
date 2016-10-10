@@ -1,0 +1,14 @@
+description "15gifts app"
+author "Michael Kane"
+
+start on runlevel [2345]
+stop on runlevel [06]
+respawn
+respawn limit 3 5
+
+env HOME=/home/vagrant
+chdir /home/vagrant/code
+setuid vagrant
+setgid vagrant
+
+exec /usr/local/bin/npm run start
