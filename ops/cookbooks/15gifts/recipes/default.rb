@@ -60,9 +60,9 @@ end
 include_recipe 'nodejs'
 
 # Ensure we install our npm dependencies
-nodejs_npm '15gifts' do
-  path '/home/vagrant/code'
-  json true
+execute "install NPM packages" do
+  cwd '/home/vagrant/code'
+  command 'npm install'
 end
 
 # Set up the app
