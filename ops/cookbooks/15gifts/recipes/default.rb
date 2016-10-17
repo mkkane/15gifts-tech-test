@@ -59,11 +59,39 @@ end
 # Set up nodejs
 include_recipe 'nodejs'
 
-# Ensure we install our npm dependencies
-execute "install NPM packages" do
-  cwd '/home/vagrant/code'
-  command 'npm install'
+# Ensure we install our npm dependencies (Note, npm can require a lot
+# of memory, and it's really hard to debug the problem when killed by
+# OOM!!  So we add temp swap space before running any npm install and
+# remove it after.
+npm_swapfile = '/npm_swapfile'
+
+bash 'create temp swap' do
+  code <<-EOF
+    fallocate -l 2G #{npm_swapfile}
+    chmod 600 #{npm_swapfile}
+    mkswap #{npm_swapfile}
+    EOF
+  not_if { ::File.exists?(npm_swapfile) }
 end
+
+execute 'install temp swap' do
+  command "swapon #{npm_swapfile}"
+  not_if "swapon -s | grep #{npm_swapfile}"
+end
+
+execute 'install NPM packages' do
+  cwd '/home/vagrant/code'
+  command 'npm install --parseable'
+  user 'vagrant'
+  group 'vagrant'
+  environment 'HOME' => '/home/vagrant'
+end
+
+execute 'remove temp swap' do
+  command "swapoff #{npm_swapfile}"
+  only_if "swapon -s | grep #{npm_swapfile}"
+end
+
 
 # Set up the app
 template '/home/vagrant/code/.env' do
